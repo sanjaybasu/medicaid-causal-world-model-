@@ -1,2 +1,2 @@
-# medicaid-causal-world-model-
+# medicaid-causal-world-model
 Medicaid causal world model
