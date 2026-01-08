@@ -1,0 +1,85 @@
+# Configuration for Receptivity Windows Analysis
+# All parameters used in the manuscript
+
+# Random seeds for reproducibility
+random_seed: 42
+numpy_seed: 42
+torch_seed: 42
+
+# Data paths (modify for your environment)
+data:
+  clinical_notes: "data/clinical_notes.parquet"
+  adt_feeds: "data/adt_events.parquet"
+  eligibility: "data/eligibility.parquet"
+  output_dir: "outputs/"
+
+# Feature engineering
+features:
+  lookback_days: 180          # History window for utilization features
+  outcome_window_days: 30     # Outcome observation window
+  min_enrollment_days: 30     # Minimum enrollment for inclusion
+
+# Intervention extraction (NLP)
+nlp:
+  model_name: "distilbert-base-uncased"
+  max_length: 512
+  batch_size: 32
+  n_epochs: 5
+  learning_rate: 2e-5
+  teacher_model: "gpt-4"
+  teacher_n_samples: 1000
+
+# Reinforcement learning
+rl:
+  algorithms:
+    - cql
+    - iql
+    - bcq
+  batch_size: 256
+  n_steps: 100000
+  gamma: 0.99
+  learning_rate: 0.0003
+  
+  # CQL-specific
+  cql:
+    alpha: 1.0
+    
+  # IQL-specific
+  iql:
+    expectile: 0.7
+    temperature: 3.0
+    
+  # BCQ-specific
+  bcq:
+    threshold: 0.3
+
+# Off-policy evaluation
+ope:
+  n_bootstrap: 1000
+  confidence_level: 0.95
+
+# Causal inference
+causal:
+  n_folds: 5
+  estimator: "doubly_robust"
+  
+  # Receptivity state definitions
+  receptivity:
+    high:
+      ed_visits_90d: 2    # >=2 ED visits in 90 days
+    moderate:
+      ed_visits_90d: 1    # 1 ED visit in 90 days
+    low:
+      ed_visits_180d: 0   # 0 ED visits in 180 days
+
+# Static risk model (baseline comparison)
+baseline:
+  model: "logistic_regression"
+  cv_folds: 5
+  top_fraction: 0.20      # Treat top 20% by risk
+
+# Figures
+figures:
+  dpi: 300
+  format: "png"
+  style: "seaborn-v0_8-whitegrid"
