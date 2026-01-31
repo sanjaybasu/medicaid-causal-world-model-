@@ -36,42 +36,26 @@ def draw_dag():
         ax.text(x, y, label, ha='center', va='center', fontsize=14, fontweight='bold')
         
     # Edges
-    edges = [
-        ('H', 'S', 'solid'),
-        ('S', 'A', 'solid'),
-        ('S', 'Y', 'solid'),
-        ('A', 'Y', 'solid'),
-        ('U', 'Y', 'dashed'), # Unmeasured confounding on Y
-        ('U', 'A', 'dashed')  # Unmeasured confounding on A? Assuming assumption of No Unmeasured Confounding holds for S.
-                              # If S satisfies backdoor, no U->A arrow if conditioned on S?
-                              # The paper assumes Selection on Observables (S).
-                              # So U->A is blocked by S? No, U is unmeasured.
-                              # If Unconfoundedness holds, there is no U that points to both A and Y.
-                              # But in reality U exists. We assume S blocks H->A.
-                              # Let's draw the "Assumed" DAG where S is sufficient.
-    ]
+    # Use shrinkA/shrinkB to avoid overlap with nodes (Radius 0.6)
+    # 0.6 data units in 8x6 fig (approx 72 dpi * 0.6 = ~45 points) usually.
+    # But shrink is in points. Let's try shrink=15.
     
-    # Identification Assumption DAG
-    # H -> S
-    # S -> A (Policy)
-    # S -> Y (Prognosis)
-    # A -> Y (Effect)
-    # U -> Y (Noise)
-    # U -> A (Violation! We assume this is absent or weak, hence E-value analysis).
-    # I will draw the standard identifying DAG.
+    arrow_opts = dict(arrowstyle="->", lw=2, shrinkA=15, shrinkB=15)
     
-    ax.annotate("", xy=nodes['S'], xytext=(2.6, 4), arrowprops=dict(arrowstyle="->", lw=2))
-    ax.annotate("", xy=nodes['A'], xytext=(4.6, 4), arrowprops=dict(arrowstyle="->", lw=2))
-    ax.annotate("", xy=nodes['Y'], xytext=(6.6, 4), arrowprops=dict(arrowstyle="->", lw=2))
+    ax.annotate("", xy=nodes['S'], xytext=nodes['H'], arrowprops=arrow_opts)
+    ax.annotate("", xy=nodes['A'], xytext=nodes['S'], arrowprops=arrow_opts)
+    # S->Y using arc and shrink
+    ax.annotate("", xy=nodes['Y'], xytext=nodes['S'], 
+                arrowprops=dict(arrowstyle="->", lw=1.5, connectionstyle="arc3,rad=-0.5", shrinkA=15, shrinkB=15))
     
-    # S -> Y (Confounding path control)
-    # Arc
-    ax.annotate("", xy=nodes['Y'], xytext=nodes['S'], arrowprops=dict(arrowstyle="->", lw=1.5, connectionstyle="arc3,rad=-0.5"))
+    ax.annotate("", xy=nodes['Y'], xytext=nodes['A'], arrowprops=arrow_opts)
     
-    # U -> Y
-    ax.annotate("", xy=(8, 4.6), xytext=(5.2, 6.8), arrowprops=dict(arrowstyle="->", lw=1.5, linestyle="--", color="gray"))
-    # U -> A (The threat)
-    ax.annotate("", xy=(6, 4.6), xytext=(4.8, 6.8), arrowprops=dict(arrowstyle="->", lw=1.5, linestyle="--", color="gray"))
+    # U -> Y (Dashed)
+    ax.annotate("", xy=nodes['Y'], xytext=nodes['U'], 
+                arrowprops=dict(arrowstyle="->", lw=1.5, linestyle="--", color="gray", shrinkA=15, shrinkB=15))
+    # U -> A (Dashed)
+    ax.annotate("", xy=nodes['A'], xytext=nodes['U'], 
+                arrowprops=dict(arrowstyle="->", lw=1.5, linestyle="--", color="gray", shrinkA=15, shrinkB=15))
     
     # Legend
     ax.text(5, 1, "Assumption: $Y(a) \perp A | S$\n(Sufficient Adjustment)", ha='center', fontsize=12)

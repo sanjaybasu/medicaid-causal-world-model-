@@ -63,10 +63,7 @@ def draw_neural_architecture():
     ax.text(-1, 6.5, "ENCODING", fontsize=10, fontweight='bold', color=gray_label, va='center', ha='right')
     ax.text(-1, 3.5, "LATENT\nDYNAMICS", fontsize=10, fontweight='bold', color=gray_label, va='center', ha='right')
     ax.text(-1, 1.2, "POLICY", fontsize=10, fontweight='bold', color=gray_label, va='center', ha='right')
-    
-    # Grid lines (Subtle)
-    for y in [7.8, 5.2, 2.2]:
-        ax.plot([-1, 14], [y, y], color="#EEEEEE", lw=1, zorder=0)
+
 
     # ==========================
     # LAYER 1: DATA INPUTS
@@ -156,7 +153,8 @@ def draw_neural_architecture():
     # LEGEND
     # ==========================
     leg_x, leg_y = 12.0, 0.5
-    ax.add_patch(patches.Rectangle((leg_x-0.2, leg_y-0.2), 2.2, 2.5, fc="white", ec="#CCC", lw=1, zorder=5))
+    # Remove border box
+    # ax.add_patch(patches.Rectangle((leg_x-0.2, leg_y-0.2), 2.2, 2.5, fc="white", ec="#CCC", lw=1, zorder=5))
     ax.text(leg_x+0.9, leg_y+2.0, "Legend", ha='center', fontweight='bold', color="#555")
     
     items = [

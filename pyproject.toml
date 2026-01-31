@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medicaid-causal-world-model"
+version = "0.1.0"
+description = "Causal world modeling toolkit for Medicaid population health (encounters + ADT + claims)."
+authors = [{ name = "Waymark Research" }]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.2",
+    "torch>=2.2",
+    "tqdm>=4.66",
+    "typing_extensions>=4.8"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ipykernel>=6.29"
+]
+rl = [
+    "d3rlpy>=2.5.0",
+    "gymnasium>=0.29",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "torch>=2.2",
+    "einops>=0.7"
+]
+distill = [
+    "scikit-learn>=1.3",
+    "joblib>=1.3",
+    "numpy>=1.24",
+    "pandas>=2.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

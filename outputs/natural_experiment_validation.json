@@ -1,0 +1,89 @@
+{
+  "natural_experiment": {
+    "results_by_tertile": {
+      "Low": {
+        "n": 12313,
+        "outcome_rate": 0.4622756436286851,
+        "ci_lower": 0.45346912026137837,
+        "ci_upper": 0.47108216699599187,
+        "mean_pred_cate": 0.003201084088823657
+      },
+      "Medium": {
+        "n": 6750,
+        "outcome_rate": 0.272,
+        "ci_lower": 0.26138416092114486,
+        "ci_upper": 0.2826158390788552,
+        "mean_pred_cate": 0.019200307030308228
+      },
+      "High": {
+        "n": 5934,
+        "outcome_rate": 0.2512639029322548,
+        "ci_lower": 0.24022790179065012,
+        "ci_upper": 0.2622999040738595,
+        "mean_pred_cate": 0.06297211502080738
+      }
+    },
+    "p_value": 9.185370412101044e-165,
+    "validation_result": "PASSED",
+    "relative_reduction": 0.4564630293737081
+  },
+  "calibration": {
+    "correlation": -0.31218718403239276,
+    "decile_data": [
+      {
+        "decile": 0,
+        "pred_cate": 0.0008033562328883097,
+        "outcome_rate": 0.49216101694915254,
+        "n": 9440
+      },
+      {
+        "decile": 1,
+        "pred_cate": 0.010167742445258364,
+        "outcome_rate": 0.3704371338440739,
+        "n": 2219
+      },
+      {
+        "decile": 2,
+        "pred_cate": 0.015440477195960521,
+        "outcome_rate": 0.3114169215086646,
+        "n": 1962
+      },
+      {
+        "decile": 3,
+        "pred_cate": 0.01763000708954183,
+        "outcome_rate": 0.26313298627543774,
+        "n": 2113
+      },
+      {
+        "decile": 4,
+        "pred_cate": 0.019730073650608103,
+        "outcome_rate": 0.26147227533460804,
+        "n": 2092
+      },
+      {
+        "decile": 5,
+        "pred_cate": 0.02631448183369219,
+        "outcome_rate": 0.26956972524624156,
+        "n": 1929
+      },
+      {
+        "decile": 6,
+        "pred_cate": 0.039934452022832884,
+        "outcome_rate": 0.2200557103064067,
+        "n": 1795
+      },
+      {
+        "decile": 7,
+        "pred_cate": 0.05062378308625243,
+        "outcome_rate": 0.16594202898550725,
+        "n": 1380
+      },
+      {
+        "decile": 8,
+        "pred_cate": 0.10228452599723709,
+        "outcome_rate": 0.3352685050798258,
+        "n": 2067
+      }
+    ]
+  }
+}

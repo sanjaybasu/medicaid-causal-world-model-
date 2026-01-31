@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Waymark
+Copyright (c) 2026 Sanjay Basu, Sadiq Y. Patel, Rajaie Batniji
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+DATA NOTICE:
+
+Patient-level data used in the published analysis is not included in this
+repository due to HIPAA privacy regulations and data use agreements.
+
+The code is provided for transparency and to enable replication with similar
+datasets, subject to appropriate ethical and legal approvals.
