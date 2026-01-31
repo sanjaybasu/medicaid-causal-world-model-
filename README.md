@@ -6,7 +6,6 @@ This repository contains code and materials for:
 
 **"Temporal Optimization of Population Health Interventions Using Causal World Models: A Multi-State Medicaid Study"**
 
-*Submitted to PLOS Medicine (January 2026)*
 
 ## Overview
 
