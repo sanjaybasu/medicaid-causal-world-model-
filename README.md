@@ -40,23 +40,6 @@ Coordinate experiments and reporting with the notebook plan in `notebooks/medica
 
 ---
 
-## Manuscript Submission
-
-The `submission/` directory contains final materials for PLOS Medicine:
-- Main manuscript and supplementary appendix
-- Three publication-quality figures (300 DPI)
-- Cover letter and verification documentation
-
-**Key findings:**
-- 164,063 Medicaid beneficiaries, 2,842,718 person-months (2022-2025)
-- Dynamic allocation: **5.3× more efficient** than risk-based allocation
-- 64% of treatment effect heterogeneity occurs within-person over time
-- Validated with natural experiment (p < 0.001)
-
-See `submission/README.md` for details.
-
----
-
 ## Citation
 
 If you use this code or reference the manuscript, please cite:
@@ -65,7 +48,6 @@ If you use this code or reference the manuscript, please cite:
 @article{basu2026temporal,
   title={Temporal Optimization of Population Health Interventions Using Causal World Models: A Multi-State Medicaid Study},
   author={Basu, Sanjay and Patel, Sadiq Y and Batniji, Rajaie},
-  journal={Submitted to PLOS Medicine},
   year={2026}
 }
 ```
