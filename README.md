@@ -1,63 +1,49 @@
-# Medicaid Causal World Model
+# Medicaid Causal Machine Learning Targeting Study
 
-[![GitHub](https://img.shields.io/badge/GitHub-medicaid--causal--world--model-blue)](https://github.com/sanjaybasu/medicaid-causal-world-model)
+This repository contains code and submission materials for:
 
-This repository contains code and materials for:
+**"Treatment-Effect-Based Versus Risk-Based Targeting of Care Management Outreach in Medicaid: A Causal Machine Learning Cohort Study"**
 
-**"Temporal Optimization of Population Health Interventions Using Causal World Models: A Multi-State Medicaid Study"**
+*Submitted to Population Health Management (April 2026)*
 
+The earlier version of this manuscript was evaluated at PLOS Medicine and not accepted; the present version was substantially rebuilt to address every reviewer concern. See [`submission_phm_revision/README.md`](submission_phm_revision/README.md) for a point-by-point summary.
 
-## Overview
+## Key findings
 
-This package implements a counterfactual simulator for Medicaid members, combining within-person fixed effects causal inference with deep generative world modeling. It upgrades prior work (`healthcare-world-model`, `engagement_analysis` v5) by adding latent confounders from encounters text and sequential policy learning over claims + ADT + encounter timelines.
+- 164,063 Medicaid beneficiaries, 2,670,806 person-months in Washington and Virginia (Jan 2023 – Dec 2025)
+- Effect-based monthly allocation prevented **5.3× more acute events** than risk-based allocation at fixed 10% capacity
+- Within-person variance accounted for **63.6%** of total variation in estimated treatment effects
+- Efficiency gains were similar across racial/ethnic and geographic subgroups
+- Findings validated via cross-state replication, MSM/IPTW, target-trial emulation, and a staggered-rollout instrumental variable with explicit pretrend, exclusion-restriction, and monotonicity diagnostics
 
-## Scope
-- **Data stitching:** unify eligibility, claims, encounters text/actions, and ADT events into an ordered event stream with censoring flags.
-- **Perception:** LLM prompts + DeepSCM to extract structured SDOH and latent confounders from notes.
-- **Causal structure:** LLM-proposed DAG validated with DECI/DAG-GNN constraints.
-- **Dynamics + policy:** Causal Decision Transformer for offline policy scoring and counterfactual rollouts.
-- **Evaluation:** target-trial emulation replay, IV sensitivity, offline OPE, fairness checks.
+## Repository layout
 
-## Layout
-- `src/medicaid_causal_world_model/`
-  - `data_schema.py` — typed event/state containers for stitched timelines.
-  - `state_extraction.py` — hooks for LLM tagging and DeepSCM training.
-  - `causal_world_model.py` — SCM + CDT orchestration and counterfactual simulation.
-- `policies.py` — policy scoring and recommendation surfaces for multidisciplinary teams (CHWs, therapists, pharmacists, care coordinators).
-- `taxonomy.py` — intervention/SDOH/role taxonomy and keyword bootstrapper for encounter notes.
-- `timeline.py` — helpers to convert encounters (and later claims/ADT) into sorted patient timelines.
-  - `evaluation.py` — offline evaluation utilities (DR/OPE, fairness).
-- `tests/` — placeholders for unit and integration tests.
-- `pyproject.toml` — simple editable install.
-
-## Quick start
-1. `pip install -e .` from this directory.
-2. Implement timeline construction feeding `data_schema.PatientEvent`.
-3. Add LLM prompt templates and DeepSCM training in `state_extraction.py`, then persist latent states.
-4. Fit causal structure and CDT via `causal_world_model.py`; evaluate with `evaluation.py`.
-
-Coordinate experiments and reporting with the notebook plan in `notebooks/medicaid_causal_world_model/`.
-
----
+- [`submission_phm_revision/`](submission_phm_revision/) — final manuscript, appendix, cover letter, figures (.docx and .md)
+- [`code/`](code/) — analysis pipeline (build event table → CATE estimation → policy evaluation → figures)
+- [`outputs/`](outputs/) — JSON outputs from the production runs
+- [`src/medicaid_causal_world_model/`](src/medicaid_causal_world_model/) — Python package implementing the analysis primitives
+- [`expected_outputs/`](expected_outputs/) — expected outputs for verification
+- [`tests/`](tests/) — unit tests
+- [`REPLICATION.md`](REPLICATION.md) — step-by-step replication instructions
 
 ## Citation
 
-If you use this code or reference the manuscript, please cite:
-
 ```bibtex
-@article{basu2026temporal,
-  title={Temporal Optimization of Population Health Interventions Using Causal World Models: A Multi-State Medicaid Study},
-  author={Basu, Sanjay and Patel, Sadiq Y and Batniji, Rajaie},
-  year={2026}
+@article{basu2026effecttargeting,
+  title   = {Treatment-Effect-Based Versus Risk-Based Targeting of Care
+             Management Outreach in Medicaid: A Causal Machine Learning
+             Cohort Study},
+  author  = {Basu, Sanjay and Patel, Sadiq Y and Batniji, Rajaie},
+  journal = {Population Health Management},
+  year    = {2026},
+  note    = {Under review}
 }
 ```
 
 ## License
 
-Code released under MIT License. See LICENSE file for details.
+MIT (see [LICENSE](LICENSE)).
 
 ## Contact
 
-For questions about the code or manuscript:
-- Sanjay Basu, MD, PhD
-- Waymark & University of California San Francisco
+Sanjay Basu, MD, PhD — University of California, San Francisco, and Waymark — sanjay.basu@ucsf.edu
