@@ -34,16 +34,16 @@ This work was previously evaluated at *PLOS Medicine* (PMEDICINE-D-26-00411R1) a
 
 ### Suggested reviewers
 
-We suggest the following reviewers, none previously approached for this work, with expertise spanning causal machine learning, health-services research, care management, and equity:
+We suggest the following early-career reviewers, none of whom were approached for this work at any prior journal. Each is at the assistant- or recently-promoted-associate-professor stage, and each works directly on the methods (causal machine learning, doubly robust estimation, longitudinal CATEs) or on the application area (Medicaid targeting, ML for healthcare risk adjustment) that the manuscript depends on. We expect they will engage substantively and constructively with the work.
 
-1. **Susan Athey, PhD** — Stanford Graduate School of Business; co-developer of the causal forest method we use. Email: athey@stanford.edu
-2. **Mark van der Laan, PhD** — University of California, Berkeley; expertise in targeted maximum likelihood and doubly robust estimation. Email: laan@stat.berkeley.edu
-3. **Niteesh K. Choudhry, MD, PhD** — Brigham and Women's Hospital, Harvard Medical School; expertise in care management, claims-based health-services research, and pharmacy adherence interventions in Medicaid populations. Email: nchoudhry@bwh.harvard.edu
-4. **Margaret McConnell, PhD** — Harvard T.H. Chan School of Public Health; expertise in Medicaid policy evaluation and quasi-experimental methods. Email: mmcconne@hsph.harvard.edu
-5. **Andrew Bindman, MD** — University of California, San Francisco; former CMS director; expertise in Medicaid care delivery and primary-care policy. Email: andrew.bindman@ucsf.edu
-6. **Sherry Glied, PhD** — Robert F. Wagner Graduate School of Public Service, New York University; expertise in Medicaid managed-care policy and economic evaluation. Email: sherry.glied@nyu.edu
+1. **Maggie Makar, PhD** — University of Michigan, Assistant Professor of Electrical Engineering and Computer Science; NSF CAREER awardee for causally motivated machine learning; works directly on "evaluating the effectiveness of population- and individual-level interventions while addressing data disparities" — a near-exact restatement of our research question. Email: mmakar@umich.edu
+2. **Anna Zink, PhD** — Tufts University, Assistant Professor of Community Health (since 2024; previously Principal Researcher at the Chicago Booth Center for Applied AI). Built a Medicaid risk-tiering algorithm in partnership with the California Department of Healthcare Services and has published on undercompensated subgroups in risk adjustment — the closest extant published comparable to our targeting study. Has cited our prior work on Medicaid coverage and heterogeneous treatment effects. Email: anna.zink@tufts.edu
+3. **Stefan Feuerriegel, PhD** — LMU Munich, Head of the Institute of AI in Management. Co-author of the Manuf Serv Oper Manag 2024 paper on data-driven preventive-care allocation that we cite as the closest published precedent (ref 10), and of the Nature Medicine 2024 causal-ML review (ref 9). Has cited Basu's heterogeneous-treatment-effects work in the causal-ML-for-healthcare review literature. Email: feuerriegel@lmu.de
+4. **Edward H. Kennedy, PhD** — Carnegie Mellon, Associate Professor of Statistics and Data Science. Author of the DR-Learner (ref 21) that we use as one of our principal benchmarks. *Disclosure: we cite his methodological work prominently; we are nonetheless suggesting him because he is the leading authority on whether the methodology is correctly applied.* Email: edward@stat.cmu.edu
+5. **Iván Díaz, PhD** — NYU Grossman School of Medicine, Associate Professor of Population Health. Trained with Mark van der Laan; works on modern semiparametric causal inference for longitudinal data including longitudinal CATE — exactly the setting of our paper. Email: ivan.diaz@nyu.edu
+6. **Kara E. Rudolph, PhD** — Columbia Mailman School of Public Health, Associate Professor of Epidemiology. Works on transporting treatment effects and identifying subpopulations most likely to benefit from interventions; has cited Basu's work on causal forests applied to clinical trial heterogeneity. Email: kr2854@cumc.columbia.edu
 
-We have **no opposed reviewers**. We have not previously suggested any of the above for this manuscript at any prior journal.
+We have **no opposed reviewers**.
 
 ### Required statements
 
