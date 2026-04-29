@@ -17,7 +17,7 @@ $^{4}$Department of Medicine, Stanford University, Stanford, CA, USA
 
 **Word count, main text:** 4,478  
 **Abstract word count:** 297  
-**Figures:** 3 | **Tables:** 4 | **References:** 45
+**Figures:** 3 | **Tables:** 4 | **References:** 40
 
 **Keywords:** Medicaid; care management; heterogeneous treatment effects; causal machine learning; population health management; health equity
 
@@ -375,13 +375,3 @@ We used Anthropic's Claude (Opus 4.7) as a writing aid for prose editing and to 
 39. Obermeyer Z, Powers B, Vogeli C, Mullainathan S. Dissecting racial bias in an algorithm used to manage the health of populations. *Science*. 2019;366(6464):447-453.
 
 40. Bang H, Robins JM. Doubly robust estimation in missing data and causal inference models. *Biometrics*. 2005;61(4):962-973.
-
-41. Hahn PR, Murray JS, Carvalho CM. Bayesian regression tree models for causal inference: regularization, confounding, and heterogeneous effects. *Bayesian Anal*. 2020;15(3):965-1056.
-
-42. Chakraborty B, Murphy SA. Dynamic treatment regimes. *Annu Rev Stat Appl*. 2014;1:447-464.
-
-43. Murphy SA. Optimal dynamic treatment regimes. *J R Stat Soc Series B Stat Methodol*. 2003;65(2):331-355.
-
-44. Pourat N, Zhou W, Haley LA, et al. Health Resources and Services Administration-funded health centers reduce health care expenditures of California Medicaid managed care beneficiaries with complex needs. *Popul Health Manag*. 2025;28(3):117-124.
-
-45. Sakinah I, Bertozzi L, Patel S, et al. Additive impact of virtual urgent and emergency department at home care on value-based primary care for Medicaid and dual-eligible members. *Popul Health Manag*. 2025;28(3):173-178.
