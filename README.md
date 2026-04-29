@@ -1,30 +1,45 @@
-# Medicaid Causal Machine Learning Targeting Study
+# Medicaid Causal Machine Learning Targeting Study — Code
 
-This repository contains code and submission materials for:
+Reproducible analysis code for:
 
-**"Treatment-Effect-Based Versus Risk-Based Targeting of Care Management Outreach in Medicaid: A Causal Machine Learning Cohort Study"**
+**Treatment-Effect-Based Versus Risk-Based Targeting of Care Management Outreach in Medicaid: A Causal Machine Learning Cohort Study**
 
-*Submitted to Population Health Management (April 2026)*
+*Population Health Management, under review.*
 
-The earlier version of this manuscript was evaluated at PLOS Medicine and not accepted; the present version was substantially rebuilt to address every reviewer concern. See [`submission_phm_revision/README.md`](submission_phm_revision/README.md) for a point-by-point summary.
+## Repository policy
 
-## Key findings
+This repository contains **only the code** required to reproduce the analysis. By design, it does **not** contain:
 
-- 164,063 Medicaid beneficiaries, 2,670,806 person-months in Washington and Virginia (Jan 2023 – Dec 2025)
-- Effect-based monthly allocation prevented **5.3× more acute events** than risk-based allocation at fixed 10% capacity
-- Within-person variance accounted for **63.6%** of total variation in estimated treatment effects
-- Efficiency gains were similar across racial/ethnic and geographic subgroups
-- Findings validated via cross-state replication, MSM/IPTW, target-trial emulation, and a staggered-rollout instrumental variable with explicit pretrend, exclusion-restriction, and monotonicity diagnostics
+- Patient or claims data (HIPAA + Medicaid data-use agreements with Washington and Virginia)
+- Aggregate results, JSON outputs, or model artifacts
+- The manuscript, appendix, figures, cover letter, or any other submission package material
+
+A meticulous data scientist with access to comparable Medicaid claims and care-management encounter data should be able to clone this repository and re-run the full pipeline end-to-end. Expected I/O contracts for each step are documented in [`REPLICATION.md`](REPLICATION.md).
+
+## What the code does
+
+The pipeline (in [`code/`](code/)) implements:
+
+1. **Event-table construction** — stitches Medicaid claims, monthly enrollment, and care-management encounter records into a person-month panel.
+2. **Feature engineering** — builds the 127-feature covariate vector $X_{it}$ described in the manuscript Methods (demographics, historical utilization, chronic conditions, engagement history, pharmacy, temporal features).
+3. **Nuisance estimation** — cross-fitted (5-fold) propensity-score and outcome-model nuisance functions via gradient boosting, with isotonic-regression calibration of propensities.
+4. **CATE estimation** — primary causal forest (`grf` v2.4.0) with honest splitting; benchmark estimators include the DR-Learner (Kennedy 2023), R-Learner (Nie & Wager 2021), T-Learner, and S-Learner.
+5. **Within-person fixed effects extension** — demeans covariates, treatment, and outcome by person-specific time-averages prior to causal-forest fitting.
+6. **Identification triangulation** — marginal structural model with stabilized IPTW, target-trial emulation, and staggered-rollout instrumental-variable analysis with pretrend, exclusion-restriction, and monotonicity diagnostics.
+7. **Off-policy evaluation** — doubly-robust value estimator (Jiang & Li 2016) for both risk-based and effect-based monthly allocation rules at fixed 10% capacity.
+8. **Variance decomposition** — mixed model on cross-fitted CATE estimates partitioning into between- and within-person components.
+9. **Equity diagnostics** — subgroup efficiency ratios, allocation parity, equalized-odds.
+10. **Sensitivity analyses** — alternative CATE estimators, propensity trimming, imputation, outcome models, outcome windows, restriction to non-deferrable ED visits (NYU algorithm), temporal split-sample validation, E-value.
 
 ## Repository layout
 
-- [`submission_phm_revision/`](submission_phm_revision/) — final manuscript, appendix, cover letter, figures (.docx and .md)
-- [`code/`](code/) — analysis pipeline (build event table → CATE estimation → policy evaluation → figures)
-- [`outputs/`](outputs/) — JSON outputs from the production runs
-- [`src/medicaid_causal_world_model/`](src/medicaid_causal_world_model/) — Python package implementing the analysis primitives
-- [`expected_outputs/`](expected_outputs/) — expected outputs for verification
+- [`code/`](code/) — numbered pipeline scripts (`01_build_event_table.py` → `12_hybrid_fe_world_model.py`)
+- [`src/medicaid_causal_world_model/`](src/medicaid_causal_world_model/) — Python package with reusable primitives (data schema, state extraction hooks, policy scoring, evaluation utilities)
 - [`tests/`](tests/) — unit tests
-- [`REPLICATION.md`](REPLICATION.md) — step-by-step replication instructions
+- [`pyproject.toml`](pyproject.toml) — package definition and dependencies
+- [`REPLICATION.md`](REPLICATION.md) — step-by-step replication instructions including expected runtime, hardware, and external data dependencies
+- [`LICENSE`](LICENSE) — MIT
+- [`.gitignore`](.gitignore) — enforces the code-only policy: data, outputs, manuscripts, and figures are explicitly excluded
 
 ## Citation
 
@@ -39,6 +54,10 @@ The earlier version of this manuscript was evaluated at PLOS Medicine and not ac
   note    = {Under review}
 }
 ```
+
+## Data access
+
+Individual-level Medicaid claims and care-management encounter data are not shareable per data-use agreements with the Washington State Health Care Authority and the Virginia Department of Medical Assistance Services. Investigators may request data through standard research-data-request procedures of each agency.
 
 ## License
 

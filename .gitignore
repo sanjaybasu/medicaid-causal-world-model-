@@ -205,3 +205,50 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ----------------------------------------------------------------------
+# Repository policy: code only, no data, no results, no manuscripts
+# ----------------------------------------------------------------------
+# Patient or claims data — never commit
+data/
+*.csv
+*.parquet
+*.feather
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.dta
+*.sav
+*.rds
+*.RDS
+
+# Aggregate results / outputs from production runs
+outputs/
+expected_outputs/
+results/
+*results*.json
+*outputs*.json
+*metrics*.json
+
+# Manuscripts, supplements, cover letters, submission packages
+submission/
+submission_*/
+manuscript/
+manuscripts/
+appendix/
+*.docx
+*.pdf
+*manuscript*.md
+*supplement*.md
+*appendix*.md
+*cover_letter*.md
+
+# Figures (kept in submission packages off-repo)
+figures/
+*.png
+*.tif
+*.tiff
+*.jpg
+*.svg
+*.eps
