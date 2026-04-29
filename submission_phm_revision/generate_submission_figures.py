@@ -126,7 +126,7 @@ def make_figure_1():
 
     plt.suptitle("Figure 1. Analytic schema.", x=0.02, ha="left",
                  weight="bold", fontsize=11, y=0.98)
-    fig.savefig(OUT / "Figure_1_Schema.png", dpi=300)
+    fig.savefig(OUT / "Basu_PHM_Figure1_Analytic_Schema.png", dpi=300)
     plt.close(fig)
 
 
@@ -192,7 +192,7 @@ def make_figure_2():
 
     fig.suptitle("Figure 2. CATE heterogeneity and primary contrast.", x=0.02, ha="left", weight="bold")
     fig.tight_layout()
-    fig.savefig(OUT / "Figure_2_CATE_and_Contrast.png", dpi=300)
+    fig.savefig(OUT / "Basu_PHM_Figure2_CATE_Distribution_and_Primary_Contrast.png", dpi=300)
     plt.close(fig)
 
 
@@ -255,7 +255,7 @@ def make_figure_3():
     fig.suptitle("Figure 3. Capacity-free contrast and quasi-experimental validation.",
                  x=0.02, ha="left", weight="bold")
     fig.tight_layout()
-    fig.savefig(OUT / "Figure_3_RATE_and_IV.png", dpi=300)
+    fig.savefig(OUT / "Basu_PHM_Figure3_RATE_Curve_and_IV_Validation.png", dpi=300)
     plt.close(fig)
 
 
