@@ -4,18 +4,6 @@ Reproducible analysis code for:
 
 **Treatment-Effect-Based Versus Risk-Based Targeting of Care Management Outreach in Medicaid: A Causal Machine Learning Cohort Study**
 
-*Population Health Management, under review.*
-
-## Repository policy
-
-This repository contains **only the code** required to reproduce the analysis. By design, it does **not** contain:
-
-- Patient or claims data (HIPAA + Medicaid data-use agreements with Washington and Virginia)
-- Aggregate results, JSON outputs, or model artifacts
-- The manuscript, appendix, figures, cover letter, or any other submission package material
-
-A meticulous data scientist with access to comparable Medicaid claims and care-management encounter data should be able to clone this repository and re-run the full pipeline end-to-end. Expected I/O contracts for each step are documented in [`REPLICATION.md`](REPLICATION.md).
-
 ## What the code does
 
 The pipeline (in [`code/`](code/)) implements:
@@ -49,15 +37,10 @@ The pipeline (in [`code/`](code/)) implements:
              Management Outreach in Medicaid: A Causal Machine Learning
              Cohort Study},
   author  = {Basu, Sanjay and Patel, Sadiq Y and Batniji, Rajaie},
-  journal = {Population Health Management},
-  year    = {2026},
-  note    = {Under review}
+  year    = {2026}
 }
 ```
 
-## Data access
-
-Individual-level Medicaid claims and care-management encounter data are not shareable per data-use agreements with the Washington State Health Care Authority and the Virginia Department of Medical Assistance Services. Investigators may request data through standard research-data-request procedures of each agency.
 
 ## License
 
